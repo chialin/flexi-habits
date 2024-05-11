@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -14,6 +14,10 @@ export const ThemeContext = React.createContext<ThemeContextType>(undefined!);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => {
