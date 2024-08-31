@@ -1,39 +1,27 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import { useTheme } from './hooks/useTheme';
+import React from 'react';
+import Header from './components/Header';
+import HabitList from './components/HabitList';
 
-function App() {
-  const [count, setCount] = useState(0);
-  const { theme, toggleTheme } = useTheme();
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <button
-          onClick={() => {
-            toggleTheme();
-          }}
-        >
-          change theme
-        </button>
-      </div>
-      <div className="read-the-docs">This theme is: {theme}</div>
-    </>
+    <div style={styles.container}>
+      <Header />
+      <main>
+        <HabitList />
+      </main>
+    </div>
   );
-}
+};
+
+const styles = {
+  container: {
+    fontFamily: "'微軟正黑體', 'Microsoft JhengHei', sans-serif",
+    lineHeight: 1.6,
+    color: '#333',
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '20px',
+  },
+};
 
 export default App;
